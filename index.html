@@ -47,22 +47,31 @@
                         SIG y geoestadística. Interesado en aplicar tecnologías geoespaciales para resolver problemas
                         del mundo real.
                     </p>
-                    <div class="datos-grid">
-                        <div class="dato-item">
-                            <span class="dato-label">Carrera:</span>
-                            <span class="dato-valor">Estadística e Informática</span>
-                        </div>
-                        <div class="dato-item">
-                            <span class="dato-label">Universidad:</span>
-                            <span class="dato-valor">UNAP</span>
-                        </div>
-                        <div class="dato-item">
-                            <span class="dato-label">Ciudad:</span>
-                            <span class="dato-valor">Puno, Perú</span>
-                        </div>
-                        <div class="dato-item">
-                            <span class="dato-label">Semestre:</span>
-                            <span class="dato-valor">10mo Semestre</span>
+
+                    <!-- INFORMACIÓN PERSONAL -->
+                    <div class="info-section">
+                        <h3 class="info-section-title">📋 Información Personal</h3>
+                        <div class="datos-grid">
+                            <div class="dato-item">
+                                <span class="dato-label">Carrera:</span>
+                                <span class="dato-valor">Estadística e Informática</span>
+                            </div>
+                            <div class="dato-item">
+                                <span class="dato-label">Universidad:</span>
+                                <span class="dato-valor">UNAP</span>
+                            </div>
+                            <div class="dato-item">
+                                <span class="dato-label">Ciudad:</span>
+                                <span class="dato-valor">Puno, Perú</span>
+                            </div>
+                            <div class="dato-item">
+                                <span class="dato-label">Semestre:</span>
+                                <span class="dato-valor">10mo Semestre</span>
+                            </div>
+                            <div class="dato-item">
+                                <span class="dato-label">Código:</span>
+                                <span class="dato-valor">217356</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,25 +88,39 @@
                 <article class="trabajo-card">
                     <div class="trabajo-header">
                         <h3>Práctica 1</h3>
-                        <span class="badge">Introducción</span>
+                        <span class="badge">Fundamentos</span>
                     </div>
-                    <p class="trabajo-descripcion">Introducción a Estadística Espacial</p>
+                    <p class="trabajo-descripcion">Estadística Espacial: Vectores y Raster</p>
                     <p class="trabajo-temas">
-                        <strong>Temas:</strong> Conceptos básicos, procesos espaciales
+                        <strong>Temas:</strong> Conceptos, vectores, raster, comparación, aplicación, software.
                     </p>
-                    <a href="#" class="btn-trabajo">📖 Ver trabajo</a>
+                    <div class="trabajo-footer">
+                        <a href="practicas/practica1.pdf" class="btn-trabajo" target="_blank" download>📥 Descargar
+                            PDF</a>
+                        <button class="btn-preview" onclick="previewPDF('practicas/practica1.pdf')">👁️ Vista
+                            Previa</button>
+                    </div>
                 </article>
 
                 <article class="trabajo-card">
                     <div class="trabajo-header">
                         <h3>Práctica 2</h3>
-                        <span class="badge">Visualización</span>
+                        <span class="badge">Aplicación</span>
                     </div>
-                    <p class="trabajo-descripcion">Mapas Raster y Vector</p>
+                    <p class="trabajo-descripcion">Ubicación espacial de las 3 variables seleccionadas de la Encuesta
+                        Nacional Agraria</p>
                     <p class="trabajo-temas">
-                        <strong>Temas:</strong> Formatos espaciales, cartografía digital
+                        <strong>Temas:</strong> Código Rstudio, Procesamiento de datos, análisis geoespacial
                     </p>
-                    <a href="#" class="btn-trabajo">🗺️ Ver trabajo</a>
+                    <div class="trabajo-footer-dual">
+                        <div class="grupo-botones">
+                            <a href="practicas/practica2_resultado.pdf" class="btn-trabajo" target="_blank" download>📄
+                                Resultado PDF</a>
+                            <button class="btn-preview" onclick="previewPDF('practicas/practica2_resultado.pdf')">👁️
+                                Preview</button>
+                        </div>
+                        <a href="https://github.com" class="btn-github" target="_blank">🔗 Repositorio GitHub</a>
+                    </div>
                 </article>
             </div>
         </section>
@@ -116,9 +139,14 @@
                     </div>
                     <p class="trabajo-descripcion">Análisis Geoestadístico</p>
                     <p class="trabajo-temas">
-                        <strong>Temas:</strong> Semivariogramas, autocorrelación espacial
+                        <strong>Temas:</strong> Semivariogramas, autocorrelación espacial, análisis exploratorio
                     </p>
-                    <a href="#" class="btn-trabajo">📊 Ver trabajo</a>
+                    <div class="trabajo-footer">
+                        <a href="practicas/practica3.pdf" class="btn-trabajo" target="_blank" download>📥 Descargar
+                            PDF</a>
+                        <button class="btn-preview" onclick="previewPDF('practicas/practica3.pdf')">👁️ Vista
+                            Previa</button>
+                    </div>
                 </article>
 
                 <article class="trabajo-card">
@@ -128,9 +156,14 @@
                     </div>
                     <p class="trabajo-descripcion">Kriging Espacial</p>
                     <p class="trabajo-temas">
-                        <strong>Temas:</strong> Kriging ordinario, cross-validation
+                        <strong>Temas:</strong> Kriging ordinario, cross-validation, validación cruzada
                     </p>
-                    <a href="#" class="btn-trabajo">🎯 Ver trabajo</a>
+                    <div class="trabajo-footer">
+                        <a href="practicas/practica4.pdf" class="btn-trabajo" target="_blank" download>📥 Descargar
+                            PDF</a>
+                        <button class="btn-preview" onclick="previewPDF('practicas/practica4.pdf')">👁️ Vista
+                            Previa</button>
+                    </div>
                 </article>
             </div>
         </section>
@@ -172,6 +205,20 @@
     <footer class="footer">
         <p>&copy; 2026 Laymir Sebastian Apaza Ajrota | EST334 - Portafolio</p>
     </footer>
+
+    <!-- MODAL PARA VISTA PREVIA DE PDF -->
+    <div id="pdfModal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <button class="pdf-close" onclick="closePDFModal()">&times;</button>
+            <div class="pdf-container">
+                <iframe id="pdfViewer" src="" width="100%" height="600px"></iframe>
+            </div>
+            <div class="pdf-modal-footer">
+                <p id="pdfFileName">Documento</p>
+                <a id="pdfDownloadLink" href="" target="_blank" download class="btn-download-modal">Descargar PDF</a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 

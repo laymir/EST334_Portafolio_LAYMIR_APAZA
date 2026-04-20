@@ -2,7 +2,69 @@
 // INICIALIZACIÓN Y CONFIGURACIÓN
 // ==========================================
 
-console.log("🎓 Portafolio EST334 cargado correctamente");
+// ==========================================
+// FUNCIONES DE VISTA PREVIA DE PDF
+// ==========================================
+
+function previewPDF(pdfPath) {
+    const modal = document.getElementById('pdfModal');
+    const iframe = document.getElementById('pdfViewer');
+    const fileName = document.getElementById('pdfFileName');
+    const downloadLink = document.getElementById('pdfDownloadLink');
+
+    // Verificar si el archivo existe
+    fetch(pdfPath, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                // El archivo existe
+                iframe.src = pdfPath;
+                downloadLink.href = pdfPath;
+
+                // Extraer nombre del archivo
+                const name = pdfPath.split('/').pop();
+                fileName.textContent = name;
+
+                // Mostrar modal
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                showNotification('⚠️ El archivo PDF aún no está disponible');
+            }
+        })
+        .catch(error => {
+            console.log('Archivo no encontrado:', pdfPath);
+            showNotification('⚠️ El archivo PDF aún no está disponible. Por favor, sube tus trabajos.');
+        });
+}
+
+function closePDFModal() {
+    const modal = document.getElementById('pdfModal');
+    const iframe = document.getElementById('pdfViewer');
+
+    modal.classList.remove('show');
+    iframe.src = '';
+    document.body.style.overflow = 'auto';
+}
+
+// Cerrar modal al hacer click fuera
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('pdfModal');
+
+    if (modal) {
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closePDFModal();
+            }
+        });
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        closePDFModal();
+    }
+});
 
 // ==========================================
 // NAVEGACIÓN SUAVE Y ACTIVA
