@@ -4,129 +4,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Portafolio EST334 - Laymir Apaza</title>
-
     <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
 
     <!-- HEADER -->
-
     <header class="header">
-
-        <h1>📊 Portafolio EST334</h1>
-
-        <p>Estadística Espacial | UNAP | 2026-I</p>
-
+        <div class="header-content">
+            <div class="header-title">
+                <h1>📊 Portafolio EST334</h1>
+                <p class="subtitle">Estadística Espacial | UNAP | 2026-I</p>
+            </div>
+        </div>
     </header>
 
-    <!-- MENU -->
-
-    <nav class="menu">
-
-        <a href="#sobre">Sobre Mí</a>
-        <a href="#unidad1">Unidad I</a>
-        <a href="#unidad2">Unidad II</a>
-        <a href="#contacto">Contacto</a>
-
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#sobre" class="nav-link">Sobre Mí</a>
+            <a href="#unidad1" class="nav-link">Unidad I</a>
+            <a href="#unidad2" class="nav-link">Unidad II</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
     </nav>
 
-    <!-- SOBRE MI -->
+    <!-- MAIN CONTENT -->
+    <main class="container">
 
-    <section id="sobre" class="card">
-
-        <div class="perfil">
-
-            <div class="foto">
-                <img src="foto.jpg" alt="Mi Foto">
-            </div>
-
-            <div class="info">
-
-                <h2>👋 LAYMIR SEBASTIAN APAZA AJROTA</h2>
-
-                <p>
-                    Estudiante de Estadística e Informática interesado en el análisis espacial,
-                    SIG y geoestadística.
-                </p>
-
-                <div class="datos">
-
-                    <p><b>Carrera:</b> Estadística e Informática</p>
-                    <p><b>Universidad:</b> UNAP</p>
-                    <p><b>Ciudad:</b> Puno, Perú</p>
-                    <p><b>Semestre:</b> 10mo Semestre</p>
-
+        <!-- SECCIÓN SOBRE MI -->
+        <section id="sobre" class="card perfil-card">
+            <div class="perfil-container">
+                <div class="perfil-foto">
+                    <img src="foto.jpg" alt="Laymir Apaza">
+                    <div class="foto-border"></div>
                 </div>
-
+                <div class="perfil-info">
+                    <h2 class="perfil-titulo">👋 LAYMIR SEBASTIAN APAZA AJROTA</h2>
+                    <p class="perfil-descripcion">
+                        Estudiante apasionado de Estadística e Informática con especialización en análisis espacial,
+                        SIG y geoestadística. Interesado en aplicar tecnologías geoespaciales para resolver problemas
+                        del mundo real.
+                    </p>
+                    <div class="datos-grid">
+                        <div class="dato-item">
+                            <span class="dato-label">Carrera:</span>
+                            <span class="dato-valor">Estadística e Informática</span>
+                        </div>
+                        <div class="dato-item">
+                            <span class="dato-label">Universidad:</span>
+                            <span class="dato-valor">UNAP</span>
+                        </div>
+                        <div class="dato-item">
+                            <span class="dato-label">Ciudad:</span>
+                            <span class="dato-valor">Puno, Perú</span>
+                        </div>
+                        <div class="dato-item">
+                            <span class="dato-label">Semestre:</span>
+                            <span class="dato-valor">10mo Semestre</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-        </div>
-
-    </section>
-
-    <!-- UNIDAD I -->
-
-    <section id="unidad1" class="card">
-
-        <h2>📘 Unidad I</h2>
-
-        <div class="trabajos">
-
-            <div class="trabajo">
-                <h3>Práctica 1</h3>
-                <p>Introducción a Estadística Espacial</p>
-                <a href="#">Ver trabajo</a>
+        <!-- SECCIÓN UNIDAD I -->
+        <section id="unidad1" class="card">
+            <div class="section-header">
+                <h2>📘 Unidad I</h2>
+                <p class="section-subtitle">Fundamentos de Estadística Espacial</p>
             </div>
+            <div class="trabajos-grid">
+                <article class="trabajo-card">
+                    <div class="trabajo-header">
+                        <h3>Práctica 1</h3>
+                        <span class="badge">Introducción</span>
+                    </div>
+                    <p class="trabajo-descripcion">Introducción a Estadística Espacial</p>
+                    <p class="trabajo-temas">
+                        <strong>Temas:</strong> Conceptos básicos, procesos espaciales
+                    </p>
+                    <a href="#" class="btn-trabajo">📖 Ver trabajo</a>
+                </article>
 
-            <div class="trabajo">
-                <h3>Práctica 2</h3>
-                <p>Mapas Raster y Vector</p>
-                <a href="#">Ver trabajo</a>
+                <article class="trabajo-card">
+                    <div class="trabajo-header">
+                        <h3>Práctica 2</h3>
+                        <span class="badge">Visualización</span>
+                    </div>
+                    <p class="trabajo-descripcion">Mapas Raster y Vector</p>
+                    <p class="trabajo-temas">
+                        <strong>Temas:</strong> Formatos espaciales, cartografía digital
+                    </p>
+                    <a href="#" class="btn-trabajo">🗺️ Ver trabajo</a>
+                </article>
             </div>
+        </section>
 
-        </div>
-
-    </section>
-
-    <!-- UNIDAD II -->
-
-    <section id="unidad2" class="card">
-
-        <h2>📗 Unidad II</h2>
-
-        <div class="trabajos">
-
-            <div class="trabajo">
-                <h3>Práctica 3</h3>
-                <p>Análisis Geoestadístico</p>
-                <a href="#">Ver trabajo</a>
+        <!-- SECCIÓN UNIDAD II -->
+        <section id="unidad2" class="card">
+            <div class="section-header">
+                <h2>📗 Unidad II</h2>
+                <p class="section-subtitle">Métodos Avanzados en Geoestadística</p>
             </div>
+            <div class="trabajos-grid">
+                <article class="trabajo-card">
+                    <div class="trabajo-header">
+                        <h3>Práctica 3</h3>
+                        <span class="badge">Análisis</span>
+                    </div>
+                    <p class="trabajo-descripcion">Análisis Geoestadístico</p>
+                    <p class="trabajo-temas">
+                        <strong>Temas:</strong> Semivariogramas, autocorrelación espacial
+                    </p>
+                    <a href="#" class="btn-trabajo">📊 Ver trabajo</a>
+                </article>
 
-            <div class="trabajo">
-                <h3>Práctica 4</h3>
-                <p>Kriging Espacial</p>
-                <a href="#">Ver trabajo</a>
+                <article class="trabajo-card">
+                    <div class="trabajo-header">
+                        <h3>Práctica 4</h3>
+                        <span class="badge">Interpolación</span>
+                    </div>
+                    <p class="trabajo-descripcion">Kriging Espacial</p>
+                    <p class="trabajo-temas">
+                        <strong>Temas:</strong> Kriging ordinario, cross-validation
+                    </p>
+                    <a href="#" class="btn-trabajo">🎯 Ver trabajo</a>
+                </article>
             </div>
+        </section>
 
-        </div>
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="card contacto-card">
+            <div class="section-header">
+                <h2>📧 Contacto</h2>
+                <p class="section-subtitle">Conectemos</p>
+            </div>
+            <div class="contacto-container">
+                <a href="mailto:laymir@example.com" class="contacto-link">
+                    <span class="contacto-icon">✉️</span>
+                    <div>
+                        <p class="contacto-tipo">Email</p>
+                        <p class="contacto-valor">tucorreo@gmail.com</p>
+                    </div>
+                </a>
+                <a href="https://github.com" class="contacto-link">
+                    <span class="contacto-icon">🔗</span>
+                    <div>
+                        <p class="contacto-tipo">GitHub</p>
+                        <p class="contacto-valor">github.com/tuusuario</p>
+                    </div>
+                </a>
+                <a href="https://linkedin.com" class="contacto-link">
+                    <span class="contacto-icon">💼</span>
+                    <div>
+                        <p class="contacto-tipo">LinkedIn</p>
+                        <p class="contacto-valor">linkedin.com/in/tuusuario</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-    </section>
+    </main>
 
-    <!-- CONTACTO -->
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Laymir Sebastian Apaza Ajrota | EST334 - Portafolio</p>
+    </footer>
 
-    <section id="contacto" class="card">
-
-        <h2>📧 Contacto</h2>
-
-        <p>Email: tucorreo@gmail.com</p>
-
-        <p>GitHub: github.com/tuusuario</p>
-
-    </section>
+    <script src="script.js"></script>
 
 </body>
 
