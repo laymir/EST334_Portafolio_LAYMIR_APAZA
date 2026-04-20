@@ -1,0 +1,94 @@
+body {
+
+    margin: 0;
+    font-family: Arial;
+    background: #0b1a33;
+    color: white;
+
+}
+
+/* HEADER */
+
+.header {
+
+    text-align: center;
+    padding: 40px;
+
+    background: linear-gradient(to right,
+            #3b82f6,
+            #7c3aed);
+
+}
+
+/* MENU */
+
+.menu {
+
+    background: #1e293b;
+    padding: 15px;
+    text-align: center;
+
+}
+
+.menu a {
+
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+/* TARJETAS */
+
+.card {
+
+    margin: 30px;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 15px;
+
+}
+
+/* PERFIL */
+
+.perfil {
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.foto img {
+
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #3b82f6;
+
+}
+
+/* TRABAJOS */
+
+.trabajos {
+
+    display: flex;
+    gap: 20px;
+
+}
+
+.trabajo {
+
+    background: #334155;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.trabajo a {
+
+    color: #38bdf8;
+    text-decoration: none;
+
+}
