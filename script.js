@@ -1,64 +1,119 @@
 // Mensaje de confirmacion en consola
 console.log("Portafolio cargado correctamente");
 
-// Esperamos a que todo el HTML este listo antes de ejecutar
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Tomamos todos los enlaces del menu y todas las secciones
-    const enlaces = document.querySelectorAll(".menu a");
-    const secciones = document.querySelectorAll("section");
+    // ============================================================
+    // 1) FONDO DE CONSTELACIONES (estrellas conectadas con lineas)
+    // ============================================================
 
-    // --- 1) RESALTAR EL ENLACE DE LA SECCION QUE SE ESTA VIENDO ---
+    const canvas = document.getElementById("constelacion");
+    const ctx = canvas.getContext("2d");
+    let ancho, alto, estrellas;
 
-    function resaltarMenu() {
-
-        let actual = "";
-
-        // Recorremos cada seccion y vemos cual esta en pantalla
-        secciones.forEach(function (seccion) {
-
-            const inicio = seccion.offsetTop - 120;
-
-            if (window.scrollY >= inicio) {
-                actual = seccion.getAttribute("id");
-            }
-
-        });
-
-        // Activamos solo el enlace que coincide con la seccion actual
-        enlaces.forEach(function (enlace) {
-
-            enlace.classList.remove("activo");
-
-            if (enlace.getAttribute("href") === "#" + actual) {
-                enlace.classList.add("activo");
-            }
-
-        });
-
+    // Ajusta el tamano del canvas al de la ventana
+    function redimensionar() {
+        ancho = canvas.width = window.innerWidth;
+        alto = canvas.height = window.innerHeight;
+        crearEstrellas();
     }
 
-    // Lo ejecutamos al cargar y cada vez que el usuario hace scroll
-    resaltarMenu();
-    window.addEventListener("scroll", resaltarMenu);
+    // Genera las estrellas (cantidad segun el tamano de pantalla)
+    function crearEstrellas() {
+        const cantidad = Math.min(110, Math.floor((ancho * alto) / 16000));
+        estrellas = [];
+        for (let i = 0; i < cantidad; i++) {
+            estrellas.push({
+                x: Math.random() * ancho,
+                y: Math.random() * alto,
+                vx: (Math.random() - 0.5) * 0.25,  // velocidad horizontal
+                vy: (Math.random() - 0.5) * 0.25,  // velocidad vertical
+                r: Math.random() * 1.4 + 0.4       // radio del punto
+            });
+        }
+    }
 
-    // --- 2) SCROLL SUAVE AL HACER CLIC EN EL MENU ---
-    // (Refuerza el scroll-behavior del CSS para navegadores antiguos)
+    // Dibuja cada cuadro de la animacion
+    function animar() {
+        ctx.clearRect(0, 0, ancho, alto);
 
-    enlaces.forEach(function (enlace) {
+        for (let i = 0; i < estrellas.length; i++) {
+            const e = estrellas[i];
 
+            // Mueve la estrella
+            e.x += e.vx;
+            e.y += e.vy;
+
+            // Si toca un borde, rebota
+            if (e.x < 0 || e.x > ancho) e.vx *= -1;
+            if (e.y < 0 || e.y > alto) e.vy *= -1;
+
+            // Dibuja el punto
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(160, 190, 255, 0.7)";
+            ctx.fill();
+
+            // Conecta con estrellas cercanas mediante una linea
+            for (let j = i + 1; j < estrellas.length; j++) {
+                const o = estrellas[j];
+                const dx = e.x - o.x;
+                const dy = e.y - o.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 130) {
+                    ctx.beginPath();
+                    ctx.moveTo(e.x, e.y);
+                    ctx.lineTo(o.x, o.y);
+                    // La linea se hace mas tenue mientras mas lejos esten
+                    ctx.strokeStyle = "rgba(90, 120, 200, " + (0.18 * (1 - dist / 130)) + ")";
+                    ctx.lineWidth = 0.6;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animar);
+    }
+
+    redimensionar();
+    animar();
+    window.addEventListener("resize", redimensionar);
+
+    // ============================================================
+    // 2) APARICION DE LAS TARJETAS AL HACER SCROLL
+    // ============================================================
+
+    const tarjetas = document.querySelectorAll(".tarea");
+
+    const observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada, indice) {
+            if (entrada.isIntersecting) {
+                // Pequeno retraso escalonado para que aparezcan en cascada
+                setTimeout(function () {
+                    entrada.target.classList.add("visible");
+                }, indice * 80);
+                observador.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    tarjetas.forEach(function (tarjeta) {
+        observador.observe(tarjeta);
+    });
+
+    // ============================================================
+    // 3) SCROLL SUAVE EN LOS ENLACES INTERNOS DEL MENU
+    // ============================================================
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (enlace) {
         enlace.addEventListener("click", function (evento) {
-
-            evento.preventDefault();
-
             const destino = document.querySelector(this.getAttribute("href"));
-
             if (destino) {
+                evento.preventDefault();
                 destino.scrollIntoView({ behavior: "smooth" });
             }
-
         });
-
     });
 
 });

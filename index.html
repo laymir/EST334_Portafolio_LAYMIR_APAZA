@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portafolio EST334 - Laymir Apaza</title>
+    <title>Portafolio EST334 · Estadística Espacial — Laymir Apaza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 
@@ -13,145 +17,276 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- FONDO DE CONSTELACIONES -->
+    <canvas id="constelacion"></canvas>
 
-    <header class="header">
-
-        <h1>📊 Portafolio EST334</h1>
-
-        <p>Estadística Espacial | UNAP | 2026-I</p>
-
-    </header>
-
-    <!-- MENU -->
-
-    <nav class="menu">
-
-        <a href="#sobre">Sobre Mí</a>
-        <a href="#unidad1">Unidad I</a>
-        <a href="#unidad2">Unidad II</a>
-        <a href="#contacto">Contacto</a>
-
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#inicio" class="logo">
+            <span class="logo-box">&#9670;</span>
+            <span>Est. Espacial</span>
+        </a>
+        <div class="nav-links">
+            <a href="#tareas">Tareas</a>
+            <a href="https://github.com/laymir" target="_blank" rel="noopener" class="nav-git">
+                <span class="git-ico">&#9099;</span> GitHub
+            </a>
+        </div>
     </nav>
 
-    <!-- SOBRE MI -->
+    <!-- HERO -->
+    <header id="inicio" class="hero">
+        <span class="badge-curso"><span class="dot"></span> CURSO 2026-I</span>
 
-    <section id="sobre" class="card">
+        <h1 class="hero-titulo">Estad&iacute;stica <span class="grad">Espacial</span></h1>
+        <p class="hero-sub">Portafolio de an&aacute;lisis y tareas</p>
 
-        <div class="perfil">
-
-            <div class="foto">
-                <img src="foto.jpg" alt="Mi Foto">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">6</div>
+                <div class="stat-lab">TAREAS</div>
             </div>
+            <div class="stat">
+                <div class="stat-num">6</div>
+                <div class="stat-lab">COMPLETADAS</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num grad">21 may</div>
+                <div class="stat-lab">&Uacute;LTIMA ACT.</div>
+            </div>
+        </div>
 
-            <div class="info">
+        <a href="#tareas" class="explorar">
+            EXPLORAR
+            <span class="flecha">&darr;</span>
+        </a>
+    </header>
 
-                <h2>👋 LAYMIR SEBASTIAN APAZA AJROTA</h2>
-
-                <p>
-                    Estudiante de Estadística e Informática interesado en el análisis espacial,
-                    SIG y geoestadística.
+    <!-- PERFIL -->
+    <section id="perfil" class="seccion">
+        <div class="perfil-card">
+            <div class="perfil-foto">
+                <img src="foto.jpg" alt="Foto de Laymir Apaza">
+            </div>
+            <div class="perfil-info">
+                <span class="eyebrow">SOBRE M&Iacute;</span>
+                <h2>Laymir Sebasti&aacute;n Apaza Ajrota</h2>
+                <p class="perfil-desc">
+                    Estudiante de Estad&iacute;stica e Inform&aacute;tica interesado en el an&aacute;lisis espacial,
+                    SIG y geoestad&iacute;stica.
                 </p>
-
-                <div class="datos">
-
-                    <p><b>Carrera:</b> Estadística e Informática</p>
-                    <p><b>Universidad:</b> UNAP</p>
-                    <p><b>Ciudad:</b> Puno, Perú</p>
-                    <p><b>Semestre:</b> 10mo Semestre</p>
-
+                <div class="perfil-datos">
+                    <div class="dato">
+                        <span class="dato-lab">Carrera</span>
+                        <span class="dato-val">Estad&iacute;stica e Inform&aacute;tica</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-lab">Universidad</span>
+                        <span class="dato-val">UNAP</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-lab">Ciudad</span>
+                        <span class="dato-val">Puno, Per&uacute;</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-lab">Semestre</span>
+                        <span class="dato-val">10mo Semestre</span>
+                    </div>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-    <!-- UNIDAD I -->
+    <!-- TAREAS -->
+    <section id="tareas" class="seccion">
+        <div class="seccion-head">
+            <span class="eyebrow">TRABAJOS</span>
+            <h2>Tareas del curso</h2>
+        </div>
 
-    <section id="unidad1" class="card">
+        <!-- ===================== UNIDAD I ===================== -->
+        <div class="unidad-head">
+            <span class="unidad-num">I</span>
+            <h3 class="unidad-titulo">Unidad I</h3>
+            <span class="unidad-linea"></span>
+        </div>
 
-        <h2>📘 Unidad I</h2>
+        <div class="galeria">
 
-        <div class="trabajos">
+            <!-- TAREA 01 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-01">
+                    <span class="tarea-badge">tarea-01</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Introducci&oacute;n a Estad&iacute;stica Espacial</h3>
+                    <p>Conceptos base y primeros an&aacute;lisis de datos espaciales.</p>
+                    <div class="tags">
+                        <span class="tag">introducci&oacute;n</span>
+                        <span class="tag">teor&iacute;a</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; abr 2026</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <!-- Practica 1: si tienes archivo, cambia el href, ej: practicas/practica1.pdf -->
+                    <a href="#" class="tarea-link" target="_blank" rel="noopener">Ver trabajo &rarr;</a>
+                </div>
+            </article>
 
-            <div class="trabajo">
-                <h3>Práctica 1</h3>
-                <p>Introducción a Estadística Espacial</p>
-                <a href="#">Ver trabajo</a>
-            </div>
+            <!-- TAREA 02 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-02">
+                    <span class="tarea-badge">tarea-02</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Mapas Raster y Vector</h3>
+                    <p>Representaci&oacute;n de datos geogr&aacute;ficos en distintos formatos.</p>
+                    <div class="tags">
+                        <span class="tag">SIG</span>
+                        <span class="tag">mapas</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; abr 2026</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <!-- Practica 2: si tienes archivo, cambia el href, ej: practicas/practica2.pdf -->
+                    <a href="#" class="tarea-link" target="_blank" rel="noopener">Ver trabajo &rarr;</a>
+                </div>
+            </article>
 
-            <div class="trabajo">
-                <h3>Práctica 2</h3>
-                <p>Mapas Raster y Vector</p>
-                <a href="#">Ver trabajo</a>
-            </div>
-
-            <div class="trabajo">
-                <h3>Práctica 3</h3>
-                <p>Dashboard de Análisis de Vacas</p>
-                <a href="#" target="_blank" rel="noopener">Ver dashboard</a>
-            </div>
-
-            <div class="trabajo">
-                <h3>Práctica 4</h3>
-                <p>Ejercicios de Variable Aleatoria Gaussiana</p>
-                <a href="#" target="_blank" rel="noopener">Ver PDF</a>
-            </div>
-
-            <div class="trabajo">
-                <h3>Práctica 5</h3>
-                <p>Exposición de Artículo</p>
-                <a href="#" target="_blank" rel="noopener">Ver PDF</a>
-            </div>
-
-            <div class="trabajo">
-                <h3>Práctica 6</h3>
-                <p>Metodología de Jenks</p>
-                <a href="#" target="_blank" rel="noopener">Ver PDF</a>
-                <a href="#" target="_blank" rel="noopener">Ver código R</a>
-            </div>
+            <!-- TAREA 03 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-03">
+                    <span class="tarea-badge">tarea-03</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Dashboard de An&aacute;lisis de Vacas</h3>
+                    <p>Tablero interactivo con indicadores de producci&oacute;n ganadera.</p>
+                    <div class="tags">
+                        <span class="tag">dashboard</span>
+                        <span class="tag">datos</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; may 2026</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <!-- Practica 3: cuando tengas el link del dashboard, pegalo en el href (ej: https://...) -->
+                    <a href="#" class="tarea-link" target="_blank" rel="noopener">Ver dashboard &rarr;</a>
+                </div>
+            </article>
 
         </div>
 
-    </section>
-
-    <!-- UNIDAD II -->
-
-    <section id="unidad2" class="card">
-
-        <h2>📗 Unidad II</h2>
-
-        <div class="trabajos">
-
-            <div class="trabajo">
-                <h3>Práctica 3</h3>
-                <p>Análisis Geoestadístico</p>
-                <a href="#">Ver trabajo</a>
-            </div>
-
-            <div class="trabajo">
-                <h3>Práctica 4</h3>
-                <p>Kriging Espacial</p>
-                <a href="#">Ver trabajo</a>
-            </div>
-
+        <!-- ===================== UNIDAD II ===================== -->
+        <div class="unidad-head">
+            <span class="unidad-num">II</span>
+            <h3 class="unidad-titulo">Unidad II</h3>
+            <span class="unidad-linea"></span>
         </div>
 
+        <div class="galeria">
+
+            <!-- TAREA 04 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-04">
+                    <span class="tarea-badge">tarea-04</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Ejercicios de Variable Aleatoria Gaussiana</h3>
+                    <p>Ejercicios propuestos sobre la distribuci&oacute;n normal.</p>
+                    <div class="tags">
+                        <span class="tag">gauss</span>
+                        <span class="tag">estad&iacute;stica espacial</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; abr 2026</span>
+                        <span class="pill-pdf">&#128196; PDF</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <!-- Practica 4: el PDF debe llamarse variable-gaussiana.pdf dentro de la carpeta practicas -->
+                    <a href="practicas/variable-gaussiana.pdf" class="tarea-link" target="_blank" rel="noopener">Ver PDF &rarr;</a>
+                </div>
+            </article>
+
+            <!-- TAREA 05 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-05">
+                    <span class="tarea-badge">tarea-05</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Exposici&oacute;n de Art&iacute;culo</h3>
+                    <p>An&aacute;lisis y presentaci&oacute;n de un art&iacute;culo de agrupamiento difuso.</p>
+                    <div class="tags">
+                        <span class="tag">agrupamiento difuso</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; may 2026</span>
+                        <span class="pill-pdf">&#128196; PDF</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <!-- Practica 5: el PDF debe llamarse exposicion-articulo.pdf dentro de la carpeta practicas -->
+                    <a href="practicas/exposicion-articulo.pdf" class="tarea-link" target="_blank" rel="noopener">Ver PDF &rarr;</a>
+                </div>
+            </article>
+
+            <!-- TAREA 06 -->
+            <article class="tarea">
+                <div class="tarea-cover cover-06">
+                    <span class="tarea-badge">tarea-06</span>
+                </div>
+                <div class="tarea-body">
+                    <h3>Metodolog&iacute;a de Jenks</h3>
+                    <p>Comparaci&oacute;n de producci&oacute;n entre pisos altitudinales mediante la metodolog&iacute;a de Jenks.</p>
+                    <div class="tags">
+                        <span class="tag">ETL</span>
+                        <span class="tag">jenks</span>
+                    </div>
+                    <div class="tarea-foot">
+                        <span class="fecha">&#128197; may 2026</span>
+                        <span class="pill-pdf">&#128196; PDF</span>
+                        <span class="estado">COMPLETADA</span>
+                    </div>
+                    <div class="tarea-links">
+                        <!-- Practica 6 PDF: el archivo debe llamarse jenks.pdf dentro de la carpeta practicas -->
+                        <a href="practicas/jenks.pdf" class="tarea-link" target="_blank" rel="noopener">Ver PDF &rarr;</a>
+                        <!-- Practica 6 codigo R: el archivo debe llamarse jenks.R dentro de la carpeta practicas -->
+                        <a href="practicas/jenks.R" class="tarea-link alt" target="_blank" rel="noopener">Ver c&oacute;digo R &rarr;</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
     </section>
 
     <!-- CONTACTO -->
-
-    <section id="contacto" class="card">
-
-        <h2>📧 Contacto</h2>
-
-        <p>Email: <a href="mailto:laymiraec@gmail.com">laymiraec@gmail.com</a></p>
-
-        <p>GitHub: <a href="https://github.com/laymir" target="_blank" rel="noopener">github.com/laymir</a></p>
-
+    <section id="contacto" class="seccion">
+        <div class="contacto-card">
+            <span class="eyebrow">CONTACTO</span>
+            <h2>&iquest;Conversamos?</h2>
+            <div class="contacto-links">
+                <a href="mailto:laymiraec@gmail.com" class="contacto-btn">
+                    <span class="c-ico">&#9993;</span>
+                    <span class="c-text">
+                        <span class="c-lab">Email</span>
+                        <span class="c-val">laymiraec@gmail.com</span>
+                    </span>
+                </a>
+                <a href="https://github.com/laymir" target="_blank" rel="noopener" class="contacto-btn">
+                    <span class="c-ico">&#9099;</span>
+                    <span class="c-text">
+                        <span class="c-lab">GitHub</span>
+                        <span class="c-val">github.com/laymir</span>
+                    </span>
+                </a>
+            </div>
+        </div>
     </section>
+
+    <footer class="footer">
+        <p>Portafolio EST334 &middot; Estad&iacute;stica Espacial &middot; UNAP &middot; 2026-I</p>
+        <p class="footer-sub">Laymir Sebasti&aacute;n Apaza Ajrota</p>
+    </footer>
 
     <script src="script.js"></script>
 
