@@ -428,8 +428,21 @@ a {
     height: 150px;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 14px;
+}
+
+.pill-pdf {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 7px;
+    background: rgba(236, 72, 153, 0.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    align-self: flex-start;
+    order: -1;
 }
 
 .cover-01 { background: linear-gradient(135deg, #1e3a5f, #2563eb); }
@@ -501,14 +514,146 @@ a {
     margin-right: auto;
 }
 
-.pill-pdf {
-    font-size: 11px;
+.pill-pdf-vieja-no-usar {
+    /* el pill ahora va en la portada, este estilo se conserva vacio */
+}
+
+/* ===== BOTONES DE PDF / DESCARGA / CODIGO ===== */
+.tarea-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 7px;
-    background: rgba(236, 72, 153, 0.12);
-    border: 1px solid rgba(236, 72, 153, 0.3);
-    color: #f472b6;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.18s, background 0.18s, border-color 0.18s;
+}
+
+.btn-pdf:hover {
+    transform: translateY(-2px);
+}
+
+.btn-ver {
+    background: linear-gradient(135deg, var(--azul), var(--violeta));
+    color: white;
+}
+
+.btn-ver:hover {
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.35);
+}
+
+.btn-descargar {
+    background: rgba(120, 150, 220, 0.08);
+    border-color: var(--borde-fuerte);
+    color: var(--texto);
+}
+
+.btn-descargar:hover {
+    background: rgba(120, 150, 220, 0.14);
+}
+
+.btn-codigo {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.35);
+    color: var(--verde);
+}
+
+.btn-codigo:hover {
+    background: rgba(52, 211, 153, 0.18);
+}
+
+/* ===== MODAL DE VISTA PREVIA ===== */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal.abierto {
+    display: flex;
+    animation: aparecer 0.25s ease;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 10, 20, 0.85);
+    backdrop-filter: blur(6px);
+}
+
+.modal-caja {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 88vh;
+    background: var(--panel);
+    border: 1px solid var(--borde-fuerte);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+}
+
+.modal-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--borde);
+    background: var(--bg-2);
+}
+
+.modal-cabecera h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.modal-cerrar {
+    background: rgba(120, 150, 220, 0.1);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.modal-cerrar:hover {
+    background: rgba(236, 72, 153, 0.18);
+    transform: rotate(90deg);
+}
+
+#modal-iframe {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    background: white;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .estado {

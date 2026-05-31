@@ -116,4 +116,50 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // ============================================================
+    // 4) MODAL DE VISTA PREVIA DE PDF
+    // ============================================================
+
+    const modal = document.getElementById("modal-pdf");
+    const modalIframe = document.getElementById("modal-iframe");
+    const modalTitulo = document.getElementById("modal-titulo");
+    const botonesVer = document.querySelectorAll(".btn-ver");
+
+    // Abre el modal con el PDF correspondiente
+    function abrirModal(rutaPdf, titulo) {
+        modalIframe.src = rutaPdf;
+        modalTitulo.innerHTML = titulo || "Vista previa";
+        modal.classList.add("abierto");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    // Cierra el modal y libera el iframe
+    function cerrarModal() {
+        modal.classList.remove("abierto");
+        modal.setAttribute("aria-hidden", "true");
+        modalIframe.src = "about:blank";
+        document.body.style.overflow = "";
+    }
+
+    // Cada boton "Vista previa" abre el modal con su PDF
+    botonesVer.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const ruta = this.getAttribute("data-pdf");
+            const titulo = this.getAttribute("data-titulo");
+            abrirModal(ruta, titulo);
+        });
+    });
+
+    // Cerrar: con el boton X o con el fondo oscuro
+    modal.querySelector(".modal-cerrar").addEventListener("click", cerrarModal);
+    modal.querySelector(".modal-backdrop").addEventListener("click", cerrarModal);
+
+    // Cerrar tambien con la tecla Escape
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape" && modal.classList.contains("abierto")) {
+            cerrarModal();
+        }
+    });
+
 });
