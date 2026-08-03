@@ -1,10 +1,4 @@
-// ==========================================
-// INICIALIZACIÓN Y CONFIGURACIÓN
-// ==========================================
-
-// ==========================================
-// FUNCIONES DE VISTA PREVIA DE PDF
-// ==========================================
+// ===== PDF PREVIEW FUNCTIONS =====
 
 function previewPDF(pdfPath) {
     const modal = document.getElementById('pdfModal');
@@ -12,19 +6,13 @@ function previewPDF(pdfPath) {
     const fileName = document.getElementById('pdfFileName');
     const downloadLink = document.getElementById('pdfDownloadLink');
 
-    // Verificar si el archivo existe
     fetch(pdfPath, { method: 'HEAD' })
         .then(response => {
             if (response.ok) {
-                // El archivo existe
                 iframe.src = pdfPath;
                 downloadLink.href = pdfPath;
-
-                // Extraer nombre del archivo
                 const name = pdfPath.split('/').pop();
                 fileName.textContent = name;
-
-                // Mostrar modal
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
             } else {
@@ -33,14 +21,13 @@ function previewPDF(pdfPath) {
         })
         .catch(error => {
             console.log('Archivo no encontrado:', pdfPath);
-            showNotification('⚠️ El archivo PDF aún no está disponible. Por favor, sube tus trabajos.');
+            showNotification('⚠️ El archivo PDF aún no está disponible');
         });
 }
 
 function closePDFModal() {
     const modal = document.getElementById('pdfModal');
     const iframe = document.getElementById('pdfViewer');
-
     modal.classList.remove('show');
     iframe.src = '';
     document.body.style.overflow = 'auto';
@@ -49,7 +36,6 @@ function closePDFModal() {
 // Cerrar modal al hacer click fuera
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('pdfModal');
-
     if (modal) {
         modal.addEventListener('click', function (event) {
             if (event.target === modal) {
@@ -59,155 +45,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Cerrar modal con tecla ESC
+// Cerrar modal con ESC
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closePDFModal();
     }
 });
 
-// ==========================================
-// NAVEGACIÓN SUAVE Y ACTIVA
-// ==========================================
-
+// ===== SMOOTH SCROLL =====
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Navegación suave (scroll smooth)
-    navLinks.forEach(link => {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                // Calcular la posición considerando la barra de navegación fija
-                const navHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+            const href = this.getAttribute('href');
+            if (href !== '#' && document.querySelector(href)) {
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
-
-    // Marcar enlace activo según scroll
-    function updateActiveLink() {
-        const navHeight = document.querySelector('.navbar').offsetHeight;
-        let current = '';
-
-        const sections = document.querySelectorAll('section[id]');
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - navHeight - 100;
-            const sectionHeight = section.clientHeight;
-
-            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateActiveLink);
 });
 
-// ==========================================
-// INTERSECCIÓN OBSERVER - ANIMACIONES AL SCROLL
-// ==========================================
-
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observar todas las tarjetas
-document.addEventListener('DOMContentLoaded', function () {
-    const cards = document.querySelectorAll('.card, .trabajo-card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.6s ease-out';
-        observer.observe(card);
-    });
-});
-
-// ==========================================
-// EFECTO HOVER EN BOTONES
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.btn-trabajo, .contacto-link');
-
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', function () {
-            this.style.transform = 'translateY(-5px)';
-        });
-
-        button.addEventListener('mouseleave', function () {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-});
-
-// ==========================================
-// VALIDACIÓN DE ENLACES
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', function () {
-    const workLinks = document.querySelectorAll('.btn-trabajo');
-
-    workLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Si el href es "#", mostrar un mensaje amistoso
-            if (this.getAttribute('href') === '#') {
-                e.preventDefault();
-                showNotification('Este trabajo aún está en construcción. ¡Vuelve pronto! 🚀');
-            }
-        });
-    });
-
-    // Lo mismo para los enlaces de contacto
-    const contactLinks = document.querySelectorAll('.contacto-link');
-    contactLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Permitir que funcione normalmente los enlaces de mailto
-            if (!this.getAttribute('href').startsWith('mailto:') &&
-                !this.getAttribute('href').startsWith('http')) {
-                e.preventDefault();
-                showNotification('Enlace en construcción. ¡Actualiza pronto! 🔗');
-            }
-        });
-    });
-});
-
-// ==========================================
-// NOTIFICACIONES
-// ==========================================
-
+// ===== NOTIFICATIONS =====
 function showNotification(message) {
-    // Crear elemento de notificación
     const notification = document.createElement('div');
-    notification.className = 'notification';
     notification.textContent = message;
     notification.style.cssText = `
         position: fixed;
@@ -216,7 +80,7 @@ function showNotification(message) {
         background: linear-gradient(135deg, #3b82f6, #7c3aed);
         color: white;
         padding: 15px 25px;
-        border-radius: 10px;
+        border-radius: 8px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         animation: slideInUp 0.4s ease-out;
@@ -224,7 +88,6 @@ function showNotification(message) {
         max-width: 300px;
     `;
 
-    // Añadir estilo de animación si no existe
     if (!document.querySelector('style[data-notification]')) {
         const style = document.createElement('style');
         style.setAttribute('data-notification', 'true');
@@ -239,7 +102,6 @@ function showNotification(message) {
                     opacity: 1;
                 }
             }
-            
             @keyframes slideOutDown {
                 from {
                     transform: translateY(0);
@@ -256,7 +118,6 @@ function showNotification(message) {
 
     document.body.appendChild(notification);
 
-    // Remover después de 4 segundos
     setTimeout(() => {
         notification.style.animation = 'slideOutDown 0.4s ease-out';
         setTimeout(() => {
@@ -265,58 +126,60 @@ function showNotification(message) {
     }, 4000);
 }
 
-// ==========================================
-// ESTADÍSTICAS DE VISITA
-// ==========================================
+// ===== INTERSECTION OBSERVER PARA ANIMACIONES =====
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-console.log('📊 Portfolio EST334 - Estadística Espacial UNAP 2026-I');
-console.log('👤 Autor: Laymir Sebastian Apaza Ajrota');
+const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.tarea-card, .info-box, .stat-box');
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+    });
+});
+
+// ===== STATS =====
+console.log('📊 Portafolio EST334 - Estadística Espacial UNAP 2026-I');
+console.log('👤 Autor: Laymir Sebastián Apaza Ajrota');
 console.log('📍 Ubicación: Puno, Perú');
 
-// Verificar soporte de características
-console.log('✅ CSS Grid: ' + (CSS.supports('display', 'grid') ? 'Soportado' : 'No soportado'));
-console.log('✅ CSS Flexbox: ' + (CSS.supports('display', 'flex') ? 'Soportado' : 'No soportado'));
-console.log('✅ Animaciones CSS: ' + (CSS.supports('animation', 'test 1s') ? 'Soportadas' : 'No soportadas'));
-
-// ==========================================
-// CONTADOR DE SESIÓN
-// ==========================================
-
-// Contar visitas localmente (en el navegador)
 let visits = localStorage.getItem('portfolio-visits') || 0;
 visits = parseInt(visits) + 1;
 localStorage.setItem('portfolio-visits', visits);
-console.log(`👁️ Visitas a este portafolio: ${visits}`);
+console.log(`👁️ Visitas: ${visits}`);
 
-// ==========================================
-// DETECCIÓN DE CONEXIÓN
-// ==========================================
-
+// ===== CONNECTION DETECTION =====
 if (navigator.onLine) {
-    console.log('🌐 Conexión de Internet: Activa');
+    console.log('🌐 Conexión: Activa');
 } else {
-    console.log('🌐 Conexión de Internet: Sin conexión');
-    showNotification('⚠️ Sin conexión a Internet. Algunos contenidos podrían no estar disponibles.');
+    showNotification('⚠️ Sin conexión a Internet');
 }
 
 window.addEventListener('online', function () {
-    console.log('🌐 ¡Conexión restaurada!');
-    showNotification('✅ ¡Conexión de Internet restaurada!');
+    showNotification('✅ Conexión restaurada');
 });
 
 window.addEventListener('offline', function () {
-    console.log('🌐 Se perdió la conexión de Internet');
-    showNotification('⚠️ Se perdió la conexión de Internet');
+    showNotification('⚠️ Se perdió la conexión');
 });
 
-// ==========================================
-// MEJORA DE ACCESIBILIDAD
-// ==========================================
-
-// Soporte para teclado en botones
+// ===== KEYBOARD SUPPORT =====
 document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.btn-trabajo, .contacto-link, .nav-link');
-
+    const buttons = document.querySelectorAll('.btn-preview, .btn-download, .btn-video, .btn-youtube');
     buttons.forEach(button => {
         button.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -327,38 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ==========================================
-// RENDIMIENTO Y LOGS
-// ==========================================
-
+// ===== PERFORMANCE =====
 window.addEventListener('load', function () {
     const performanceData = window.performance.timing;
     const pageLoadTime = performanceData.loadEventEnd - performanceData.navigationStart;
-    console.log(`⏱️ Tiempo de carga: ${pageLoadTime}ms`);
-    console.log(`✨ Portafolio cargado correctamente en ${(pageLoadTime / 1000).toFixed(2)}s`);
+    console.log(`⏱️ Tiempo de carga: ${pageLoadTime}ms (${(pageLoadTime / 1000).toFixed(2)}s)`);
 });
-
-// ==========================================
-// FUNCIONALIDADES EXTRAS (OPCIONAL)
-// ==========================================
-
-// Efecto de enfoque para mejor accesibilidad
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Tab') {
-        document.body.classList.add('keyboard-active');
-    }
-});
-
-document.addEventListener('mousedown', function () {
-    document.body.classList.remove('keyboard-active');
-});
-
-// Agregar estilos para focus visible
-const focusStyle = document.createElement('style');
-focusStyle.textContent = `
-    body.keyboard-active *:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-    }
-`;
-document.head.appendChild(focusStyle);
