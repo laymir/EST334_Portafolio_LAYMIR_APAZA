@@ -11,7 +11,7 @@ function previewPDF(pdfPath) {
     const iframe = document.getElementById('pdfViewer');
     const fileName = document.getElementById('pdfFileName');
     const downloadLink = document.getElementById('pdfDownloadLink');
-    
+
     // Verificar si el archivo existe
     fetch(pdfPath, { method: 'HEAD' })
         .then(response => {
@@ -19,11 +19,11 @@ function previewPDF(pdfPath) {
                 // El archivo existe
                 iframe.src = pdfPath;
                 downloadLink.href = pdfPath;
-                
+
                 // Extraer nombre del archivo
                 const name = pdfPath.split('/').pop();
                 fileName.textContent = name;
-                
+
                 // Mostrar modal
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
@@ -40,18 +40,18 @@ function previewPDF(pdfPath) {
 function closePDFModal() {
     const modal = document.getElementById('pdfModal');
     const iframe = document.getElementById('pdfViewer');
-    
+
     modal.classList.remove('show');
     iframe.src = '';
     document.body.style.overflow = 'auto';
 }
 
 // Cerrar modal al hacer click fuera
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('pdfModal');
-    
+
     if (modal) {
-        modal.addEventListener('click', function(event) {
+        modal.addEventListener('click', function (event) {
             if (event.target === modal) {
                 closePDFModal();
             }
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Cerrar modal con tecla ESC
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closePDFModal();
     }
@@ -70,22 +70,22 @@ document.addEventListener('keydown', function(event) {
 // NAVEGACIÓN SUAVE Y ACTIVA
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     // Navegación suave (scroll smooth)
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 // Calcular la posición considerando la barra de navegación fija
                 const navHeight = document.querySelector('.navbar').offsetHeight;
                 const targetPosition = targetSection.offsetTop - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -93,23 +93,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Marcar enlace activo según scroll
     function updateActiveLink() {
         const navHeight = document.querySelector('.navbar').offsetHeight;
         let current = '';
-        
+
         const sections = document.querySelectorAll('section[id]');
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop - navHeight - 100;
             const sectionHeight = section.clientHeight;
-            
+
             if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     window.addEventListener('scroll', updateActiveLink);
 });
 
@@ -130,7 +130,7 @@ const observerOptions = {
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -141,7 +141,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observar todas las tarjetas
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const cards = document.querySelectorAll('.card, .trabajo-card');
     cards.forEach(card => {
         card.style.opacity = '0';
@@ -155,15 +155,15 @@ document.addEventListener('DOMContentLoaded', function() {
 // EFECTO HOVER EN BOTONES
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.btn-trabajo, .contacto-link');
-    
+
     buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
         });
-        
-        button.addEventListener('mouseleave', function() {
+
+        button.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
         });
     });
@@ -173,11 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // VALIDACIÓN DE ENLACES
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const workLinks = document.querySelectorAll('.btn-trabajo');
-    
+
     workLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Si el href es "#", mostrar un mensaje amistoso
             if (this.getAttribute('href') === '#') {
                 e.preventDefault();
@@ -185,13 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Lo mismo para los enlaces de contacto
     const contactLinks = document.querySelectorAll('.contacto-link');
     contactLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Permitir que funcione normalmente los enlaces de mailto
-            if (!this.getAttribute('href').startsWith('mailto:') && 
+            if (!this.getAttribute('href').startsWith('mailto:') &&
                 !this.getAttribute('href').startsWith('http')) {
                 e.preventDefault();
                 showNotification('Enlace en construcción. ¡Actualiza pronto! 🔗');
@@ -223,7 +223,7 @@ function showNotification(message) {
         font-weight: 500;
         max-width: 300px;
     `;
-    
+
     // Añadir estilo de animación si no existe
     if (!document.querySelector('style[data-notification]')) {
         const style = document.createElement('style');
@@ -253,9 +253,9 @@ function showNotification(message) {
         `;
         document.head.appendChild(style);
     }
-    
+
     document.body.appendChild(notification);
-    
+
     // Remover después de 4 segundos
     setTimeout(() => {
         notification.style.animation = 'slideOutDown 0.4s ease-out';
@@ -299,12 +299,12 @@ if (navigator.onLine) {
     showNotification('⚠️ Sin conexión a Internet. Algunos contenidos podrían no estar disponibles.');
 }
 
-window.addEventListener('online', function() {
+window.addEventListener('online', function () {
     console.log('🌐 ¡Conexión restaurada!');
     showNotification('✅ ¡Conexión de Internet restaurada!');
 });
 
-window.addEventListener('offline', function() {
+window.addEventListener('offline', function () {
     console.log('🌐 Se perdió la conexión de Internet');
     showNotification('⚠️ Se perdió la conexión de Internet');
 });
@@ -314,11 +314,11 @@ window.addEventListener('offline', function() {
 // ==========================================
 
 // Soporte para teclado en botones
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.btn-trabajo, .contacto-link, .nav-link');
-    
+
     buttons.forEach(button => {
-        button.addEventListener('keydown', function(e) {
+        button.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 this.click();
@@ -331,11 +331,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // RENDIMIENTO Y LOGS
 // ==========================================
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const performanceData = window.performance.timing;
     const pageLoadTime = performanceData.loadEventEnd - performanceData.navigationStart;
     console.log(`⏱️ Tiempo de carga: ${pageLoadTime}ms`);
-    console.log(`✨ Portafolio cargado correctamente en ${(pageLoadTime/1000).toFixed(2)}s`);
+    console.log(`✨ Portafolio cargado correctamente en ${(pageLoadTime / 1000).toFixed(2)}s`);
 });
 
 // ==========================================
@@ -343,13 +343,13 @@ window.addEventListener('load', function() {
 // ==========================================
 
 // Efecto de enfoque para mejor accesibilidad
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Tab') {
         document.body.classList.add('keyboard-active');
     }
 });
 
-document.addEventListener('mousedown', function() {
+document.addEventListener('mousedown', function () {
     document.body.classList.remove('keyboard-active');
 });
 
