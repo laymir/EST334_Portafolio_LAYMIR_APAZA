@@ -21,13 +21,14 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0a0e27 0%, #0f1535 50%, #1a0f35 100%);
+    background: #0a0e1a;
     color: var(--text-light);
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
 }
 
+/* Fondo oscuro con patrón geométrico 3D */
 body::before {
     content: '';
     position: fixed;
@@ -35,23 +36,29 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: #0a0e1a;
     background-image: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><style>.line{stroke:rgba(0,212,255,0.1);stroke-width:1;fill:none}.point{fill:rgba(0,212,255,0.2)}</style></defs><g class="network"><line class="line" x1="100" y1="100" x2="300" y2="150"/><line class="line" x1="300" y1="150" x2="400" y2="80"/><line class="line" x1="400" y1="80" x2="250" y2="50"/><line class="line" x1="250" y1="50" x2="100" y2="100"/><circle class="point" cx="100" cy="100" r="3"/><circle class="point" cx="300" cy="150" r="3"/><circle class="point" cx="400" cy="80" r="3"/><circle class="point" cx="250" cy="50" r="3"/><line class="line" x1="500" y1="200" x2="700" y2="250"/><line class="line" x1="700" y1="250" x2="800" y2="150"/><line class="line" x1="800" y1="150" x2="600" y2="100"/><line class="line" x1="600" y1="100" x2="500" y2="200"/><circle class="point" cx="500" cy="200" r="3"/><circle class="point" cx="700" cy="250" r="3"/><circle class="point" cx="800" cy="150" r="3"/><circle class="point" cx="600" cy="100" r="3"/><line class="line" x1="900" y1="300" x2="1100" y2="350"/><line class="line" x1="1100" y1="350" x2="1000" y2="450"/><line class="line" x1="1000" y1="450" x2="800" y2="400"/><line class="line" x1="800" y1="400" x2="900" y2="300"/><circle class="point" cx="900" cy="300" r="3"/><circle class="point" cx="1100" cy="350" r="3"/><circle class="point" cx="1000" cy="450" r="3"/><circle class="point" cx="800" cy="400" r="3"/><line class="line" x1="200" y1="500" x2="400" y2="550"/><line class="line" x1="400" y1="550" x2="500" y2="650"/><line class="line" x1="500" y1="650" x2="300" y2="700"/><line class="line" x1="300" y1="700" x2="100" y2="600"/><line class="line" x1="100" y1="600" x2="200" y2="500"/><circle class="point" cx="200" cy="500" r="3"/><circle class="point" cx="400" cy="550" r="3"/><circle class="point" cx="500" cy="650" r="3"/><circle class="point" cx="300" cy="700" r="3"/><circle class="point" cx="100" cy="600" r="3"/><line class="line" x1="700" y1="500" x2="900" y2="550"/><line class="line" x1="900" y1="550" x2="1000" y2="650"/><line class="line" x1="1000" y1="650" x2="800" y2="700"/><line class="line" x1="800" y1="700" x2="600" y2="600"/><line class="line" x1="600" y1="600" x2="700" y2="500"/><circle class="point" cx="700" cy="500" r="3"/><circle class="point" cx="900" cy="550" r="3"/><circle class="point" cx="1000" cy="650" r="3"/><circle class="point" cx="800" cy="700" r="3"/><circle class="point" cx="600" cy="600" r="3"/></g></svg>');
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><style>.line{stroke:rgba(0,200,255,0.15);stroke-width:1.5;fill:none}.point{fill:rgba(0,200,255,0.3);filter:drop-shadow(0 0 3px rgba(0,200,255,0.5))}</style></defs><g class="network"><line class="line" x1="150" y1="80" x2="380" y2="120"/><line class="line" x1="380" y1="120" x2="450" y2="40"/><line class="line" x1="450" y1="40" x2="250" y2="20"/><line class="line" x1="250" y1="20" x2="150" y2="80"/><line class="line" x1="150" y1="80" x2="320" y2="200"/><line class="line" x1="380" y1="120" x2="520" y2="180"/><circle class="point" cx="150" cy="80" r="4"/><circle class="point" cx="380" cy="120" r="4"/><circle class="point" cx="450" cy="40" r="4"/><circle class="point" cx="250" cy="20" r="4"/><circle class="point" cx="320" cy="200" r="4"/><circle class="point" cx="520" cy="180" r="4"/><line class="line" x1="600" y1="150" x2="800" y2="200"/><line class="line" x1="800" y1="200" x2="900" y2="100"/><line class="line" x1="900" y1="100" x2="700" y2="50"/><line class="line" x1="700" y1="50" x2="600" y2="150"/><line class="line" x1="600" y1="150" x2="750" y2="300"/><line class="line" x1="800" y1="200" x2="950" y2="280"/><circle class="point" cx="600" cy="150" r="4"/><circle class="point" cx="800" cy="200" r="4"/><circle class="point" cx="900" cy="100" r="4"/><circle class="point" cx="700" cy="50" r="4"/><circle class="point" cx="750" cy="300" r="4"/><circle class="point" cx="950" cy="280" r="4"/><line class="line" x1="100" y1="400" x2="350" y2="450"/><line class="line" x1="350" y1="450" x2="420" y2="560"/><line class="line" x1="420" y1="560" x2="180" y2="600"/><line class="line" x1="180" y1="600" x2="50" y2="480"/><line class="line" x1="50" y1="480" x2="100" y2="400"/><circle class="point" cx="100" cy="400" r="4"/><circle class="point" cx="350" cy="450" r="4"/><circle class="point" cx="420" cy="560" r="4"/><circle class="point" cx="180" cy="600" r="4"/><circle class="point" cx="50" cy="480" r="4"/><line class="line" x1="700" y1="450" x2="950" y2="500"/><line class="line" x1="950" y1="500" x2="1050" y2="600"/><line class="line" x1="1050" y1="600" x2="800" y2="650"/><line class="line" x1="800" y1="650" x2="600" y2="550"/><line class="line" x1="600" y1="550" x2="700" y2="450"/><circle class="point" cx="700" cy="450" r="4"/><circle class="point" cx="950" cy="500" r="4"/><circle class="point" cx="1050" cy="600" r="4"/><circle class="point" cx="800" cy="650" r="4"/><circle class="point" cx="600" cy="550" r="4"/></g></svg>');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
     pointer-events: none;
-    z-index: -1;
-    opacity: 0.6;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    background: linear-gradient(135deg, #0088cc 0%, #00d4ff 25%, #7c3aed 75%, #ff006e 100%);
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #0f2a4a 100%);
     padding: 60px 20px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 .navbar-hero {
